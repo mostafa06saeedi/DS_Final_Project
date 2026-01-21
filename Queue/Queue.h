@@ -6,8 +6,8 @@ template <typename T>
 class Queue {
 public:
     Queue(size_t capacity);
-    bool isEmpty();
-    int size();
+    bool isEmpty() const;
+    size_t size() const;
     bool enqueue(T data);
     const T &dequeue();
     const T &peek();
