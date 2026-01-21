@@ -1,10 +1,11 @@
 #ifndef QUEUE_H
 #define QUEUE_H
+#include <cstddef>
 
 template <typename T>
 class Queue {
 public:
-    Queue();
+    Queue(size_t capacity);
     bool isEmpty();
     int size();
     bool enqueue(T data);
@@ -15,7 +16,9 @@ public:
     T &back();
 
 private:
-
+    size_t _size;
+    size_t _capacity;
+    T *_container;
 };
 
 #include "Queue.tpp"
