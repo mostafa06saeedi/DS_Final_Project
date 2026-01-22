@@ -1,6 +1,7 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 #include <cstddef>
+#include <cstring>
 
 template <typename T>
 class Queue {
@@ -8,7 +9,7 @@ public:
     Queue(size_t capacity);
     bool isEmpty() const;
     size_t size() const;
-    bool enqueue(T data);
+    bool enqueue(const T &data);
     const T &dequeue();
     const T &peek();
     void clear();
@@ -19,6 +20,8 @@ private:
     size_t _size;
     size_t _capacity;
     T *_container;
+    size_t _dindex; //has an instance(full slot)
+    size_t _eindex; //empty slot
 };
 
 #include "Queue.tpp"
