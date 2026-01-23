@@ -12,7 +12,7 @@ public:
     size_t size() const;
     bool enqueue(const T &data);
     void dequeue();
-    const T &peek();
+    const T &peek() const;
     void clear();
     T &front();
     T &back();

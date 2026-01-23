@@ -50,3 +50,11 @@ void Queue<T>::dequeue() {
     --_size;
     
 }
+
+template<typename T>
+const T&Queue<T>::peek() const {
+    if(this->isEmpty()) {
+        throw std::out_of_range("Queue empty");
+    }
+    return _container[_dindex];
+}
