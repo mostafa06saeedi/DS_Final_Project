@@ -74,3 +74,8 @@ T&Queue<T>::front() {
     }
     return _container[_dindex];
 }
+
+template<typename T>
+void Queue<T>::clear() {
+    _eindex = _dindex = _size = 0;
+}
