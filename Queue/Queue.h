@@ -2,6 +2,7 @@
 #define QUEUE_H
 #include <cstddef>
 #include <cstring>
+#include <stdexcept>
 
 template <typename T>
 class Queue {
@@ -10,7 +11,7 @@ public:
     bool isEmpty() const;
     size_t size() const;
     bool enqueue(const T &data);
-    const T &dequeue();
+    void dequeue();
     const T &peek();
     void clear();
     T &front();

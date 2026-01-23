@@ -39,3 +39,14 @@ bool Queue<T>::enqueue(const T &data) {
         _eindex = (_eindex + 1) % _capacity;
         return true;
 }
+
+template<typename T>
+void Queue<T>::dequeue() {
+    if(this->isEmpty()) {
+        throw std::out_of_range("Queue is empty");
+    }
+    
+    _dindex = (++_dindex) % _capacity;
+    --_size;
+    
+}
