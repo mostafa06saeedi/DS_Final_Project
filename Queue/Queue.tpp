@@ -58,3 +58,19 @@ const T&Queue<T>::peek() const {
     }
     return _container[_dindex];
 }
+
+template<typename T>
+T&Queue<T>::back() {
+    if(this->isEmpty()) {
+        throw std::out_of_range;
+    }
+    return _container[_eindex];
+}
+
+template<typename T>
+T&Queue<T>::front() {
+    if(this->isEmpty()) {
+        throw std::out_of_range;
+    }
+    return _container[_dindex];
+}
