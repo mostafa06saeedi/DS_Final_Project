@@ -31,5 +31,15 @@ HashMap<T>::~HashMap() {
     delete[] _buckets;
 }
 
+template <typename T>
+size_t HashMap<T>::size() const {
+    return _size;
+}
+
+template <typename T>
+size_t HashMap<T>::capacity() const {
+    return _capacity;
+}
+
 template<typename T>
 HashMap<T>::Node::Node(int k, T v): key(k), value(v), next(nullptr) {}

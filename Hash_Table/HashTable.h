@@ -8,8 +8,8 @@ class HashMap {
 public:
     HashMap(int capacity = 16, float loadFactor = 0.75f);
     ~HashMap();
-    int size();
-    int capacity();
+    size_t size() const;
+    size_t capacity() const;
     // const char *hashFunction(key);
     bool put(int key, T value);
     const T &get(int key);
