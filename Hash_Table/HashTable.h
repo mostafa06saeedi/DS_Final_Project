@@ -3,6 +3,8 @@
 
 #include <cstddef>
 #include <string>
+#include <iostream>
+#include <exception>
 
 template <typename T>
 class HashMap {
@@ -13,7 +15,7 @@ public:
     size_t capacity() const;
     size_t hashFunction(const std::string &key) const;
     bool put(const std::string &key, const T &value);
-    const T &get(int key);
+    T *get(std::string key) const;
     const T &remove(int key);
     bool containsKey(int key);
     //keys();

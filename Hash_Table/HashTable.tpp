@@ -74,6 +74,16 @@ bool HashMap<T>::put(const std::string &key, const T &value) {
 }
 
 template<typename T>
+T *HashMap<T>::get(std::string key) const {
+    Node *node = _buckets[hashFunction(key)];
+    while (node != nullptr) {
+        if (node->key == key) return &node->value;
+        node = node->next;
+    }
+    return nullptr;
+}
+
+template<typename T>
 HashMap<T>::Node::Node(std::string k, T v): key(k), value(v), next(nullptr) {}
 
 template<typename T>
