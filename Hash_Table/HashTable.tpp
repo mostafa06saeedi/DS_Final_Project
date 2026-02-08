@@ -120,6 +120,25 @@ bool HashMap<T>::remove(const std::string &key) {
 }
 
 template<typename T>
+bool HashMap<T>::containsKey(const std::string &key) const {
+    if (_size == 0) {
+        return false;
+    }
+    
+    size_t index = hashFunction(key);
+    Node* current = _buckets[index];
+    
+    while (current != nullptr) {
+        if (current->key == key) {
+            return true;
+        }
+        current = current->next;
+    }
+    
+    return false;
+}
+
+template<typename T>
 HashMap<T>::Node::Node(std::string k, T v): key(k), value(v), next(nullptr) {}
 
 template<typename T>

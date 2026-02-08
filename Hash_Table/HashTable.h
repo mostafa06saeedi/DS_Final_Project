@@ -17,7 +17,7 @@ public:
     bool put(const std::string &key, const T &value);
     T *get(std::string key) const;
     bool remove(const std::string &key);
-    bool containsKey(int key);
+    bool containsKey(const std::string &key) const;
     //keys();
     //values
     void clear();
