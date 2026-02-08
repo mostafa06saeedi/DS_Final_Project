@@ -18,10 +18,7 @@ public:
     T *get(std::string key) const;
     bool remove(const std::string &key);
     bool containsKey(const std::string &key) const;
-    //keys();
-    //values
     void clear();
-    bool resize(int newCapacity);
 private:
     struct Node {
         std::string key;
@@ -36,8 +33,6 @@ private:
     size_t _size;
     size_t _capacity;
     float _loadFactor;
-    
-    void _rehash();
 };
 
 #include "HashTable.tpp"
