@@ -1,7 +1,7 @@
 #ifndef DOUBLY_LINKED_LIST_H
 #define DOUBLY_LINKED_LIST_H
 
-#include <string> // فقط مجاز است، در عمل استفاده نمی‌شود
+#include <string>
 
 template <typename T>
 class DoublyLinkedList
@@ -49,7 +49,6 @@ public:
     Node *getTail() const { return tail; }
 };
 
-// include tpp only here
 #include "DoublyLinkedList.tpp"
 
 #endif
