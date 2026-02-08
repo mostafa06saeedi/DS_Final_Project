@@ -42,4 +42,13 @@ size_t HashMap<T>::capacity() const {
 }
 
 template<typename T>
+size_t HashMap<T>::hashFunction(const std::string &key) const {
+    size_t seed = 5381;
+    for (char c : key) {
+        seed = ((seed << 5) + seed) + static_cast<unsigned char>(c);
+    }   
+    return seed % _capacity;
+}
+
+template<typename T>
 HashMap<T>::Node::Node(int k, T v): key(k), value(v), next(nullptr) {}

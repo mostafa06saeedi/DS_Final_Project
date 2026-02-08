@@ -2,6 +2,7 @@
 #define HASH_TABLE_H
 
 #include <cstddef>
+#include <string>
 
 template <typename T>
 class HashMap {
@@ -10,7 +11,7 @@ public:
     ~HashMap();
     size_t size() const;
     size_t capacity() const;
-    // const char *hashFunction(key);
+    size_t hashFunction(const std::string &key) const;
     bool put(int key, T value);
     const T &get(int key);
     const T &remove(int key);
