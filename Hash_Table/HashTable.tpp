@@ -51,4 +51,30 @@ size_t HashMap<T>::hashFunction(const std::string &key) const {
 }
 
 template<typename T>
-HashMap<T>::Node::Node(int k, T v): key(k), value(v), next(nullptr) {}
+bool HashMap<T>::put(const std::string &key, const T &value) {
+    size_t index = hashFunction(key);
+
+    Node *current = _buckets[index];
+    while (current != nullptr) {
+        if (current->key == key) {
+            current->value = value;
+            return true;
+        }
+        current = current->next;
+    }
+    
+    Node *newNode = new Node();
+    newNode->key = key;
+    newNode->value = value;
+    newNode->next = _buckets[index]; 
+    _buckets[index] = newNode;       
+    
+    _size++;
+    return true;
+}
+
+template<typename T>
+HashMap<T>::Node::Node(std::string k, T v): key(k), value(v), next(nullptr) {}
+
+template<typename T>
+HashMap<T>::Node::Node(): key(std::string()), next(nullptr) {}

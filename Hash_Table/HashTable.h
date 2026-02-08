@@ -12,7 +12,7 @@ public:
     size_t size() const;
     size_t capacity() const;
     size_t hashFunction(const std::string &key) const;
-    bool put(int key, T value);
+    bool put(const std::string &key, const T &value);
     const T &get(int key);
     const T &remove(int key);
     bool containsKey(int key);
@@ -22,10 +22,11 @@ public:
     bool resize(int newCapacity);
 private:
     struct Node {
-        int key;
+        std::string key;
         T value;
         Node* next;
-        Node(int k, T v);
+        Node();
+        Node(std::string k, T v);
     };
     
     Node** _buckets;
