@@ -1,0 +1,39 @@
+#ifndef HASH_TABLE_H
+#define HASH_TABLE_H
+
+#include <cstddef>
+#include <string>
+#include <iostream>
+#include <exception>
+
+template <typename T>
+class HashMap {
+public:
+    HashMap(int capacity = 16, float loadFactor = 0.75f);
+    ~HashMap();
+    size_t size() const;
+    size_t capacity() const;
+    size_t hashFunction(const std::string &key) const;
+    bool put(const std::string &key, const T &value);
+    T *get(std::string key) const;
+    bool remove(const std::string &key);
+    bool containsKey(const std::string &key) const;
+    void clear();
+private:
+    struct Node {
+        std::string key;
+        T value;
+        Node* next;
+        Node();
+        Node(std::string k, T v);
+        ~Node();
+    };
+    
+    Node** _buckets;
+    size_t _size;
+    size_t _capacity;
+    float _loadFactor;
+};
+
+#include "HashTable.tpp"
+#endif
