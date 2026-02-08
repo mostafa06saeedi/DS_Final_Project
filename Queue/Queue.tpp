@@ -62,7 +62,7 @@ const T&Queue<T>::peek() const {
 template<typename T>
 T&Queue<T>::back() {
     if(this->isEmpty()) {
-        throw std::out_of_range;
+        throw std::out_of_range("Queue empty");
     }
     return _container[_eindex];
 }
@@ -70,7 +70,7 @@ T&Queue<T>::back() {
 template<typename T>
 T&Queue<T>::front() {
     if(this->isEmpty()) {
-        throw std::out_of_range;
+        throw std::out_of_range("Queue empty");
     }
     return _container[_dindex];
 }
