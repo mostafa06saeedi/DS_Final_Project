@@ -84,7 +84,50 @@ T *HashMap<T>::get(std::string key) const {
 }
 
 template<typename T>
+bool HashMap<T>::remove(const std::string &key) {
+    if (_size == 0) {
+        return false;
+    }
+    
+    size_t index = hashFunction(key);
+    Node *current = _buckets[index];
+    
+    if (current != nullptr && current->key == key) {
+        _buckets[index] = current->next;
+        delete current;
+        _size--;
+        return true;
+    }
+    
+    Node* prev = current;
+    if (prev != nullptr) {
+        current = prev->next;
+    }
+    
+    while (current != nullptr) {
+        if (current->key == key) {
+            prev->next = current->next;
+            delete current;
+            _size--;
+            return true;
+        }
+        
+        prev = current;
+        current = current->next;
+    }
+    
+    return false;
+}
+
+template<typename T>
 HashMap<T>::Node::Node(std::string k, T v): key(k), value(v), next(nullptr) {}
 
 template<typename T>
 HashMap<T>::Node::Node(): key(std::string()), next(nullptr) {}
+
+template<typename T>
+HashMap<T>::Node::~Node() {
+    if constexpr (std::is_pointer<T>::value) {
+        if (value != nullptr) delete value;
+    }
+}

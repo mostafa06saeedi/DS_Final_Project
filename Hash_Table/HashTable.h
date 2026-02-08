@@ -16,7 +16,7 @@ public:
     size_t hashFunction(const std::string &key) const;
     bool put(const std::string &key, const T &value);
     T *get(std::string key) const;
-    const T &remove(int key);
+    bool remove(const std::string &key);
     bool containsKey(int key);
     //keys();
     //values
@@ -29,6 +29,7 @@ private:
         Node* next;
         Node();
         Node(std::string k, T v);
+        ~Node();
     };
     
     Node** _buckets;
